@@ -15,11 +15,16 @@ class LinkedList {
     while (current.next) {
       current = current.next;
     }
-
     current.next = new Node(val);
   }
 
-  removeTail() {}
+  removeTail() {
+    let current = this.head;
+    while (current.next.next) {
+      current = current.next;
+    }
+    current.next = null;
+  }
 
   getList() {
     const listArr = [];
@@ -34,10 +39,17 @@ class LinkedList {
 }
 
 const list = new LinkedList("A");
-console.log(list.head);
+// console.log(list.head);
 list.add("B");
-console.log(list.getList());
+// console.log(list.getList());
 list.add("C");
-console.log(list.getList());
+list.add("D");
+list.add("E");
+// console.log(list.getList());
+
+console.log('list before', list.getList());
+list.removeTail();
+console.log('list after', list.getList());
+
 
 module.exports = { LinkedList };
