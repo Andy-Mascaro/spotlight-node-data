@@ -16,10 +16,33 @@ class PersonTreeNode {
 
   add(node) {
     // implemented as in previous challenge
+    add(node) {
+      if (node.value < this.value) {
+        if (this.left) {
+          this.left.add(node);
+        } else {
+          this.left = node;
+        }
+      }
+      if (node.value > this.value) {
+        if (this.right) {
+          this.right.add(node);
+        } else {
+          this.right = node;
+        }
+      }
+    }
   }
 
   findPerson(name) {
     // Implement me!
+    if (name === this.value) return this.person;
+    if (name < this.value) {
+      this.left.findPerson(name);
+    }
+    if (name > this.value) {
+      this.right.findPerson(name);
+    }
   }
 }
 ```

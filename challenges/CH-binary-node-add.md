@@ -1,5 +1,4 @@
-Binary Node Add
----
+## Binary Node Add
 
 ## Challenge
 
@@ -14,9 +13,23 @@ class BinaryTreeNode {
   }
 
   add(node) {
-    // Implement me!
+    if (node.value < this.value) {
+      if (this.left) {
+        this.left.add(node);
+      } else {
+        this.left = node;
+      }
+    }
+    if (node.value > this.value) {
+      if (this.right) {
+        this.right.add(node);
+      } else {
+        this.right = node;
+      }
+    }
   }
 }
+module.exports = { BinaryTreeNode };
 ```
 
 Keep in mind this is a recursive operation.
@@ -24,10 +37,10 @@ Keep in mind this is a recursive operation.
 ## Test Cases
 
 ```js
-const B = new BinaryTreeNode('B');
-const A = new BinaryTreeNode('A');
-const C = new BinaryTreeNode('C');
-const D = new BinaryTreeNode('D');
+const B = new BinaryTreeNode("B");
+const A = new BinaryTreeNode("A");
+const C = new BinaryTreeNode("C");
+const D = new BinaryTreeNode("D");
 
 // B will be the root of the tree:
 B.add(A);
@@ -40,4 +53,3 @@ B.add(C);
 ## Note
 
 FYI: the shape of a Binary Tree is dependant on order of construction.
-
