@@ -47,9 +47,32 @@ list.add("D");
 list.add("E");
 // console.log(list.getList());
 
-console.log('list before', list.getList());
+console.log("list before", list.getList());
 list.removeTail();
-console.log('list after', list.getList());
+console.log("list after", list.getList());
+class BinaryTreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
 
+  add(node) {
+    if (node.value < this.value) {
+      if (this.left) {
+        this.left.add(node);
+      } else {
+        this.left = node;
+      }
+    }
+    if (node.value > this.value) {
+      if (this.right) {
+        this.right.add(node);
+      } else {
+        this.right = node;
+      }
+    }
+  }
+}
 
-module.exports = { LinkedList };
+module.exports = { LinkedList, BinaryTreeNode };
