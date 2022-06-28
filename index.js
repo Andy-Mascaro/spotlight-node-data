@@ -75,4 +75,45 @@ class BinaryTreeNode {
   }
 }
 
-module.exports = { LinkedList, BinaryTreeNode };
+class PersonTreeNode {
+  constructor(person) {
+    this.value = person.name;
+    this.person = person;
+    this.left = null;
+    this.right = null;
+  }
+
+  add(node) {
+    // implemented as in previous challenge
+    if (node.value < this.value) {
+      if (this.left) {
+        this.left.add(node);
+      } else {
+        this.left = node;
+      }
+    }
+    if (node.value > this.value) {
+      if (this.right) {
+        this.right.add(node);
+      } else {
+        this.right = node;
+      }
+    }
+  }
+
+  find(name) {
+    console.log('this', this);
+    // Implement me!
+    if (name === this.value) return this.person;
+    if (name < this.value) {
+      this.left.find(name);
+    }
+    if (name > this.value) {
+      console.log('this.right', this.right);
+      console.log('name', name);
+      this.right.find(name);
+    }
+  }
+}
+
+module.exports = { LinkedList, BinaryTreeNode, PersonTreeNode };
